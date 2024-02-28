@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <audio id="myAudio" autoplay>
+    <audio id="myAudio" autoplay loop>
         <source src="hualiansong.mp3" type="audio/mpeg">
     </audio>
     <!-- 
@@ -108,6 +108,14 @@
         addEventListener('resize', () => resize(innerWidth, innerHeight))
         dispatchEvent(new Event('resize'))
         document.body.prepend(renderer.domElement)
+
+        document.addEventListener('DOMContentLoaded', function () {
+        var audio = document.getElementById('myAudio');
+        // Play the audio when the user clicks anywhere on the page
+        document.addEventListener('click', function() {
+            audio.play();
+        }, { once: true }); // Add { once: true } to ensure the event listener triggers only once
+    });
     </script>
 </body>
 </html>
